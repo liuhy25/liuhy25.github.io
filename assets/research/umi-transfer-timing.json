@@ -1,0 +1,46 @@
+{
+  "umi": [
+    {
+      "start": 0,
+      "end": 8.56,
+      "label": "1×"
+    },
+    {
+      "start": 8.56,
+      "end": 10.0,
+      "label": "Freeze frame"
+    }
+  ],
+  "robot": [
+    {
+      "start": 0,
+      "end": 0.88,
+      "label": "≈2.33×"
+    },
+    {
+      "start": 0.88,
+      "end": 2.88,
+      "label": "1×"
+    },
+    {
+      "start": 2.88,
+      "end": 4.16,
+      "label": "≈2.33×"
+    },
+    {
+      "start": 4.16,
+      "end": 7.16,
+      "label": "1×"
+    },
+    {
+      "start": 7.16,
+      "end": 8.0,
+      "label": "≈2.33×"
+    },
+    {
+      "start": 8.0,
+      "end": 10.0,
+      "label": "1×"
+    }
+  ]
+}
