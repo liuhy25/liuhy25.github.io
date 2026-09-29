@@ -1,8 +1,8 @@
 (() => {
-  const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const previews = [...document.querySelectorAll('.research-video')].map(video => {
     const button = document.querySelector(`[aria-controls="${video.id}"]`);
     const state = { video, button, visible: false, choice: null };
+    video.defaultMuted = true;
     video.muted = true;
     button.hidden = false;
 
@@ -12,7 +12,7 @@
       button.setAttribute('aria-label', `${action} ${button.dataset.project} preview`);
     };
     state.sync = () => {
-      const enabled = state.choice ?? !motion.matches;
+      const enabled = state.choice ?? true;
       if (enabled && state.visible && !document.hidden) {
         video.play().catch(refreshButton);
       } else {
@@ -23,6 +23,8 @@
       state.choice = video.paused;
       state.sync();
     });
+    video.addEventListener('loadeddata', () => state.sync());
+    video.addEventListener('canplay', () => state.sync());
     video.addEventListener('play', refreshButton);
     video.addEventListener('pause', refreshButton);
     video.addEventListener('error', () => {
@@ -44,7 +46,7 @@
   }, { threshold: [0, 0.25] });
   previews.forEach(state => observer.observe(state.video));
   document.addEventListener('visibilitychange', () => previews.forEach(state => state.sync()));
-  motion.addEventListener('change', () => previews.forEach(state => state.sync()));
+  window.addEventListener('pageshow', () => previews.forEach(state => state.sync()));
 
   // Preserve the source clips' speed labels in the side-by-side transfer preview.
   const transfer = document.getElementById('preview-umi-bridge');
