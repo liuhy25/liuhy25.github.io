@@ -54,8 +54,9 @@ h3 a{color:var(--ink)}h3 span{font-size:13px;font-weight:400;color:var(--muted);
 .research-entry+.research-entry{border-top:1px solid #f1eef3}
 .research-image{display:block;overflow:hidden;border-radius:4px;line-height:0;background:#f4f2f5}
 .research-image img,.research-video{display:block;width:100%;height:auto;object-fit:contain}
-.research-media{min-width:0}
-.media-caption{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:6px;font-size:10px;line-height:1.5;color:var(--muted)}
+.research-media{min-width:0;display:flex;flex-direction:column}
+.research-copy{display:flex;flex-direction:column;min-width:0}
+.media-caption{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:6px;min-height:32px;font-size:10px;line-height:1.5;color:var(--muted)}
 .video-toggle{font:inherit;font-size:11px;color:var(--accent);border:0;background:transparent;cursor:pointer;padding:6px 0 6px 10px;min-height:32px}
 .video-toggle:hover{text-decoration:underline;text-underline-offset:3px}
 .video-toggle:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
@@ -66,8 +67,8 @@ h3 a{color:var(--ink)}h3 span{font-size:13px;font-weight:400;color:var(--muted);
 .authors strong{color:#49414e;font-weight:650}
 .publication{margin:4px 0 0;font-size:12px;font-style:italic;color:#716878}
 .research-summary{margin:10px 0 0;font-size:13px;line-height:1.8;color:#554f5b}
-.research-links{display:flex;gap:18px;margin-top:10px;font-size:12px;font-weight:600}
-.research-links a{display:inline-flex;align-items:center;min-height:28px}
+.research-links{display:flex;gap:18px;margin-top:10px;min-height:32px;font-size:12px;font-weight:600}
+.research-links a{display:inline-flex;align-items:center;min-height:32px}
 @media(max-width:760px){.research-entry{grid-template-columns:240px minmax(0,1fr);gap:23px}.research-copy h3{font-size:15px}}
 @media(max-width:580px){.site-header{height:auto;min-height:92px;flex-wrap:wrap;column-gap:20px;row-gap:7px;padding-block:15px}.site-header nav{gap:17px;flex-wrap:wrap}.research-entry{display:flex;flex-direction:column;align-items:stretch;gap:19px;padding:25px 0 28px}.research-media{width:100%;max-width:400px}.research-copy h3{font-size:16px}.authors{font-size:12px}.research-summary{font-size:13px}.research-links{font-size:13px;gap:22px}.research-links a{min-height:36px}}
 @keyframes arrive{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
@@ -78,7 +79,20 @@ h3 a{color:var(--ink)}h3 span{font-size:13px;font-weight:400;color:var(--muted);
 .transfer-labels,.transfer-speeds{display:grid;grid-template-columns:1fr 1fr;gap:4px;text-align:center;line-height:1.5}
 .transfer-labels{font-size:11px;font-weight:600;color:#554f5b;margin-bottom:7px}
 .transfer-speeds{font-size:10px;color:var(--muted);margin-top:5px}
-.transfer-media .media-caption{margin-top:0}
+
 .authors sup{font-size:10px;line-height:0}
 .author-note{font-size:11px;line-height:1.5;color:var(--muted);margin:3px 0 0}
 @media(min-width:761px) and (max-width:900px){.research-entry{grid-template-columns:260px minmax(0,1fr)}}
+
+/* Pair the university and college emblems in the education entries. */
+.institution-logos{display:flex;align-items:center;gap:8px;flex:0 0 168px}
+.institution-logos .institution-logo{width:80px;flex-basis:80px}
+@media(max-width:760px){.institution-logos{flex-basis:144px}.institution-logos .institution-logo{width:68px;flex-basis:68px}}
+@media(max-width:580px){
+  .institution-logos{flex-basis:104px;gap:8px;align-items:flex-start}
+  .institution-logos .institution-logo{width:48px;flex-basis:48px;height:56px;margin-top:0}
+  .institution-logos .institution-logo img{width:44px;height:44px}
+  .institution-logos .logo-weiyang img{width:56px;height:56px;flex-shrink:0}
+  .research-links{margin-top:10px;padding-top:0}
+  .media-caption{margin-top:6px;padding-top:0}
+}
